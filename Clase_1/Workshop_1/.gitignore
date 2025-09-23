@@ -1,0 +1,3 @@
+# Ignorar ignorables usuales
+.DS_Store
+Thumbs.db
