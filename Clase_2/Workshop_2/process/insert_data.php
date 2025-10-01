@@ -7,8 +7,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $correo = $_POST['correo'];
     $telefono = $_POST['telefono'];
 
+    $upper_nombre = strtoupper($nombre);
+    $upper_apellido = strtoupper($apellido);
+    $correo = strtolower($correo);
+
     // Validate input
-    if (empty($nombre) || empty($apellido) || empty($correo) || empty($telefono)) {
+    if (empty($upper_nombre) || empty($upper_apellido) || empty($correo) || empty($telefono)) {
         echo "Todos los campos son requeridos.";
         exit;
     }
@@ -32,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Insert new user
         $stmt = $conn->prepare("INSERT INTO usuarios (nombre, apellido, correo, telefono) VALUES (?, ?, ?, ?)");
-        $stmt->execute([$nombre, $apellido, $correo, $telefono]);
+        $stmt->execute([$upper_nombre, $upper_apellido, $correo, $telefono]);
         
         echo "Registro creado exitosamente";
         echo "<br><button onclick=\"window.location.href='../index.php'\">Volver al formulario</button>";
