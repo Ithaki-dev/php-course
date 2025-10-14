@@ -1,5 +1,5 @@
 <?php
-$dia = "Lunes"
+$dia = "Lunes";
 
 switch ($dia) {
     case "Lunes":
